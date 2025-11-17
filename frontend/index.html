@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tu Futuro Digital — Compra y registro</title>
+  <meta name="description" content="Tu Futuro Digital — guía y mentoría para recuperar autonomía digital. Pagos únicos: Básico 497€, Avanzado 1.997€, Premium 3.000€." />
+  <style>
+    :root{--accent:#0f62fe;--bg:#f6f8fb;--card:#ffffff;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:var(--bg);color:#111}
+    header{background:linear-gradient(90deg,var(--accent),#0366d6);color:#fff;padding:56px 20px;text-align:center}
+    header h1{font-size:32px;margin:0 0 8px}
+    header p{margin:0;opacity:.95}
+    .container{max-width:1100px;margin:30px auto;padding:0 16px}
+    .grid{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:start}
+    .card{background:var(--card);border-radius:14px;padding:22px;box-shadow:0 6px 20px rgba(17,24,39,0.06)}
+    .plans{display:flex;gap:12px;flex-wrap:wrap}
+    .plan{flex:1 1 0;padding:16px;border-radius:10px;border:1px solid #eef2ff}
+    .plan h3{margin:0 0 6px}
+    .price{font-weight:700;font-size:20px}
+    .btn{display:inline-block;background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;border:none;cursor:pointer}
+    form label{display:block;font-weight:600;margin-top:10px}
+    input,select{width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #e6eef8}
+    footer{padding:28px 0;text-align:center;color:var(--muted)}
+    .muted{color:var(--muted)}
+    .benef{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    .benef li{margin-bottom:8px}
+    .testimony{font-style:italic;background:#fcfdff;padding:14px;border-radius:8px;border-left:4px solid #cfe0ff}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tu Futuro Digital</h1>
+    <p>Guía práctica en 4 pasos + mentoría para recuperar tu autonomía y seguridad digital.</p>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <!-- Left: sales copy -->
+      <div>
+        <div class="card">
+          <h2>Lo que conseguirás</h2>
+          <ul class="benef">
+            <li>Superar la dependencia digital y recuperar control.</li>
+            <li>Eliminar bloqueos (miedo, inseguridad, frustración).</li>
+            <li>Guía práctica en 4 pasos: aprender, proteger, automatizar y avanzar.</li>
+            <li>Mentoría personalizada para adaptar la estrategia a ti.</li>
+          </ul>
+
+          <h3 style="margin-top:18px">Planes (pagos únicos)</h3>
+          <div class="plans">
+            <div class="plan">
+              <h3>Plan Básico</h3>
+              <p class="price">497 €</p>
+              <p class="muted">Ebook + acceso comunidad WhatsApp + materiales básicos</p>
+              <div style="margin-top:10px">
+                <button class="btn" onclick="startCheckout('basic')">Comprar (PayPal / Bizum)</button>
+              </div>
+            </div>
+
+            <div class="plan">
+              <h3>Plan Avanzado</h3>
+              <p class="price">1.997 €</p>
+              <p class="muted">Todo lo anterior + sesiones de mentoría grupal</p>
+              <div style="margin-top:10px">
+                <button class="btn" onclick="startCheckout('advanced')">Comprar (PayPal / Bizum)</button>
+              </div>
+            </div>
+
+            <div class="plan">
+              <h3>Plan Premium</h3>
+              <p class="price">3.000 €</p>
+              <p class="muted">Mentoría personalizada + seguimiento 1:1</p>
+              <div style="margin-top:10px">
+                <button class="btn" onclick="startCheckout('premium')">Comprar (PayPal / Bizum)</button>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:18px">Testimonio real</h3>
+          <div class="testimony">"Gracias a la guía y al acompañamiento pude superar mi bloqueo digital. Hoy me siento capaz y seguro." — Ana</div>
+
+          <h3 style="margin-top:18px">Por qué funciona</h3>
+          <ol>
+            <li>Contenido práctico y paso a paso.</li>
+            <li>Mentoría basada en experiencia real y adaptada a cada ritmo.</li>
+            <li>Comunidad de apoyo en WhatsApp para resolver dudas y mantener motivación.</li>
+          </ol>
+        </div>
+
+        <section style="margin-top:18px">
+          <div class="card">
+            <h3>Compra desde Hotmart</h3>
+            <p class="muted">Si prefieres Hotmart (plataforma de entrega + afiliados), usa el siguiente enlace:</p>
+            <p><a id="hotmartLink" href="#" class="btn" target="_blank">Comprar en Hotmart</a></p>
+            <small class="muted">(Reemplaza el link por tu URL de Hotmart)</small>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right: registration + payment widget -->
+      <aside>
+        <div class="card">
+          <h3>Registro / Comprar y acceder a WhatsApp</h3>
+
+          <form id="registroForm">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" required />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+
+            <label for="plan">Selecciona plan</label>
+            <select id="plan" name="plan">
+              <option value="basic">Plan Básico — 497 €</option>
+              <option value="advanced">Plan Avanzado — 1.997 €</option>
+              <option value="premium">Plan Premium — 3.000 €</option>
+            </select>
+
+            <label for="metodo">Método de pago</label>
+            <select id="metodo" name="metodo">
+              <option value="paypal">PayPal</option>
+              <option value="bizum">Bizum</option>
+              <option value="hotmart">Hotmart</option>
+            </select>
+
+            <div style="margin-top:12px">
+              <button type="submit" class="btn">Proceder</button>
+            </div>
+          </form>
+
+          <p style="font-size:13px;margin-top:12px" class="muted">Al completar la compra recibirás el acceso a la comunidad de WhatsApp automáticamente.</p>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="card">
+          <h4>Enlace directo a la comunidad</h4>
+          <p class="muted">Únete ahora (se abrirá WhatsApp tras completar el registro):</p>
+          <a class="btn" href="https://chat.whatsapp.com/Bi1OoFiwrLQ5tPiBi85bBy" target="_blank">Unirme a WhatsApp</a>
+        </div>
+      </aside>
+    </div>
+
+    <section style="margin-top:18px" class="card">
+      <h3>Preguntas frecuentes</h3>
+      <p><strong>¿Son suscripciones?</strong> No — los planes son pagos únicos.</p>
+      <p><strong>¿Recibiré un email?</strong> Sí — recibirás confirmación y el enlace a los materiales. Además se te añadirá a la comunidad de WhatsApp si todo está correcto.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container muted">© 2025 Tu Futuro Digital — Contacto: jesus.xusta87@gmail.com</div>
+  </footer>
+
+  <!-- SCRIPTS: client-side logic + PayPal integration -->
+  <script>
+    // --- CONFIGURATION (SUSTITUYE con tus claves en producción) ---
+    const CONFIG = {
+      PAYPAL_CLIENT_ID: 'REEMPLAZAR_PAYPAL_CLIENT_ID',
+      HOTMART_LINK: 'REEMPLAZAR_LINK_HOTMART',
+      WHATSAPP_JOIN: 'https://chat.whatsapp.com/Bi1OoFiwrLQ5tPiBi85bBy',
+      BACKEND_URL: '' // p.ej. https://tu-dominio.com (debe exponer /api/registro y webhooks)
+    }
+
+    // Pega el link de Hotmart
+    document.getElementById('hotmartLink').href = CONFIG.HOTMART_LINK || '#';
+
+    // Abre el flujo de checkout según selección
+    document.getElementById('registroForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const data = {
+        nombre: document.getElementById('nombre').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        plan: document.getElementById('plan').value,
+        metodo: document.getElementById('metodo').value
+      };
+
+      // Envío de registro preliminar al backend para crear registro y recibir instrucciones de pago
+      try{
+        const resp = await fetch((CONFIG.BACKEND_URL||'') + '/api/registro', {
+          method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)
+        });
+        const result = await resp.json();
+
+        if(result.ok){
+          // Dependiendo del método, redirige o muestra instrucciones
+          if(data.metodo === 'paypal'){
+            // abrir ventana para completar pago; backend devuelve approvalUrl
+            window.location.href = result.approvalUrl;
+          } else if(data.metodo === 'bizum'){
+            if(result.payUrl) window.location.href = result.payUrl;
+            else alert('Tu pasarela de Bizum está configurada en el backend.');
+          } else if(data.metodo === 'hotmart'){
+            window.open(CONFIG.HOTMART_LINK, '_blank');
+          }
+        } else {
+          alert(result.message || 'Error en el registro.');
+        }
+      } catch(err){
+        console.error(err); alert('Error al conectar con el servidor.');
+      }
+    });
+
+    function startCheckout(planKey){
+      const map = {basic:'basic',advanced:'advanced',premium:'premium'};
+      document.getElementById('plan').value = map[planKey] || 'basic';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+  </script>
+</body>
+</html>
